@@ -18,3 +18,17 @@ WITH (
     FORMAT CSV,
     HEADER TRUE
 );
+
+--ANOTHER METHODS
+COPY employee2 (
+    employee_id,
+    first_name,
+    last_name,
+    department,
+    salary,
+    joining_date,
+    age
+)
+FROM 'F:/SQL FILES/employee_data.csv'
+DELIMITER','
+CSV HEADER;
