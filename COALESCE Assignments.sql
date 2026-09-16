@@ -57,6 +57,7 @@ ADD COLUMN total_discount NUMERIC(10,2);
 --Calculating Total Discount Amount
 UPDATE products
 SET total_discount = price*0.1
+--SET total_discount = price-discount_price
 WHERE product_name NOT IN('Laptop','Water Bottle') ;
 --Generating Final Product Price Report
 SELECT product_name,price,total_discount,
