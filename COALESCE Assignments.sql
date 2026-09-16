@@ -1,3 +1,4 @@
+/*SQL Product Inventory Management & COALESCE Function Practice*/
 DROP TABLE IF EXISTS products;
 CREATE TABLE products(
 	product_id SERIAL PRIMARY KEY,
@@ -32,31 +33,32 @@ VALUES
 
 SELECT * FROM products;
 
-/* . COALESCE function Assignments*/
-
+/* . COALESCE function Assignments
+Adding a Discount Price Column*/
 ALTER TABLE products 
 ADD COLUMN discount_price NUMERIC(10,2);
 
-
+--Calculating Discounted Product Prices
 UPDATE products
 SET discount_price = price*0.9
 WHERE product_name NOT IN('Laptop','Water Bottle') ;
-
+--Displaying Original and Discounted Prices
 SELECT product_name, price, discount_price 
 FROM products;
-
+--Handling NULL Values Using COALESCE
 SELECT product_name,price,
 	COALESCE(discount_price, price)AS final_price
 FROM products;
 
 /*showing the total_discount on price column */
+--Adding a Total Discount Column
 ALTER TABLE products
 ADD COLUMN total_discount NUMERIC(10,2);
-
+--Calculating Total Discount Amount
 UPDATE products
 SET total_discount = price*0.1
 WHERE product_name NOT IN('Laptop','Water Bottle') ;
-
+--Generating Final Product Price Report
 SELECT product_name,price,total_discount,
 	COALESCE(discount_price, price)AS final_price
 FROM products;
