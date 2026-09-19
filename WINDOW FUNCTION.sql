@@ -46,7 +46,7 @@ FROM products;
 
 --using rank
 SELECT product_name, category, price,
-	RANK() OVER(PARTITION BY category ORDER BY price ASC) AS row_num
+	RANK() OVER(PARTITION BY category ORDER BY price ASC) AS rank
 FROM products;
 
 --getting prefix summ of price 
